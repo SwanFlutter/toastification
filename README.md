@@ -3,7 +3,8 @@
 [![pub package](https://img.shields.io/pub/v/toastification?color=blue&style=plastic)](https://pub.dartlang.org/packages/toastification) [![codecov](https://codecov.io/gh/payam-zahedi/toastification/graph/badge.svg?token=UTQX773WXM)](https://codecov.io/gh/payam-zahedi/toastification)
 
 <p align="left">
-<img src="https://github.com/payam-zahedi/toastification/blob/main/doc/image/intro.png?raw=true" width="100%" alt="Styles" />
+  <img width="576" alt="intro" src="https://github.com/user-attachments/assets/86dc1f6f-8675-467b-b1d6-78be0e505641" width="100%" alt="Styles" />
+
 </p>
 
 Toastification is a Flutter package that allows developers to easily display toast notifications in their apps. Toast notifications are a type of pop-up message that typically appear on the screen and disappear after a short amount of time. They are commonly used to display information, alerts, or confirmations to the user.
@@ -103,7 +104,7 @@ With this setup, you can use any of the Toastification methods without providing
 By using the `show` method, you can show predefined toast messages. You can use the `ToastificationType` enum to choose the type and `ToastificationStyle` enum to choose the style of the toast message.
 
 <p align="center">
-<img src="https://github.com/payam-zahedi/toastification/blob/main/doc/image/types.png?raw=true" width="100%" alt="Types" />
+<img src="https://github.com/user-attachments/assets/72854e59-0ce1-45b5-852c-a9a42836f248" width="100%" alt="Types" />
 </p>
 
 ### Using Static Method (Recommended)
@@ -129,7 +130,7 @@ Toastification().showInstance(
 ### Using Legacy Approach
 
 ```dart
-toastification.show(
+Toastification.show(
   context: context, // optional if you use ToastificationWrapper
   title: Text('Hello, world!'),
   autoCloseDuration: const Duration(seconds: 5),
@@ -141,7 +142,7 @@ This will display a toast message with the text "Hello, world!".
 You can customize the appearance of the toast message by passing in additional parameters to the `show()` method:
 
 ```dart
-toastification.show(
+Toastification.show(
   context: context, // optional if you use ToastificationWrapper
   type: ToastificationType.success,
   style: ToastificationStyle.flat,
@@ -203,7 +204,7 @@ toastification.show(
 We have 5 predefined styles for toast messages, each offering a unique look and feel to match your application's design. Here's a breakdown of each style:
 
 <p align="left">
-<img src="https://github.com/payam-zahedi/toastification/blob/main/doc/image/styles.png?raw=true" width="100%" alt="Styles" />
+<img src="https://github.com/user-attachments/assets/b1959058-aac0-4626-a972-ded1cdc5ffe9" width="100%" alt="Styles" />
 </p>
 
 1. **ToastificationStyle.flat**
@@ -291,7 +292,7 @@ Toastification().showCustomInstance(
 ### Using Legacy Approach
 
 ```dart
-toastification.showCustom(
+Toastification.showCustom(
   context: context, // optional if you use ToastificationWrapper
   autoCloseDuration: const Duration(seconds: 5),
   alignment: Alignment.topRight,
@@ -329,7 +330,7 @@ MaterialApp(
 Now you can `show` toasts using the overlayState from the navigatorKey:
 
 ```dart
-toastification.show(
+Toastification.show(
   overlayState: navigatorKey.currentState?.overlay,
   autoCloseDuration: const Duration(seconds: 5),
   title: Text('Hello, World!'),
@@ -339,7 +340,7 @@ toastification.show(
 If you want to use `showCustom` instead, you can use it like this:
 
 ```dart
-toastification.showCustom(
+Toastification.showCustom(
   overlayState: navigatorKey.currentState?.overlay,
   autoCloseDuration: const Duration(seconds: 5),
   builder: (BuildContext context, ToastificationItem holder) {
@@ -353,7 +354,7 @@ toastification.showCustom(
 You can customize the animation of the toast notification by providing a Duration for the animation duration and implementing your own animation builder function using the animationBuilder parameter. Here's an example of how to use custom animations:
 
 ```dart
-toastification.show(
+Toastification.show(
   context: context,
   title: Text('Hello, world!'),
   // .... Other parameters
@@ -555,8 +556,8 @@ The main class `Toastification` provides both static methods and instance method
 Toastification was redesigned by [Sepide Moqadasi](https://sepide.design/). We want to extend our heartfelt appreciation to Sepide for her exceptional design work, which has made Toastification visually appealing and user-friendly. Special thanks to Sepide for her valuable contributions to this project.
 
 <p align="left">
-<img src="https://github.com/payam-zahedi/toastification/blob/main/doc/image/design_mobile.png?raw=true" width="49%" alt="Styles" />
-<img src="https://github.com/payam-zahedi/toastification/blob/main/doc/image/design_desktop.png?raw=true" width="49%" alt="Styles" />
+<img src="https://github.com/user-attachments/assets/f7680078-19f8-4e90-b83f-5c043bde9dd1" width="49%" alt="Styles" />
+<img src="https://github.com/user-attachments/assets/c6a32135-f951-41b2-a348-f0336f9bb774" width="49%" alt="Styles" />
 </p>
 
 ## Contributors
