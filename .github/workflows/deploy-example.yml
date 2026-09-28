@@ -1,0 +1,53 @@
+name: Deploy example to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: example
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Download Drift Web assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release download drift-2.31.0 --repo simolus3/drift \
+            --pattern 'drift_worker*' --dir web
+          gh release download sqlite3-2.9.4 --repo simolus3/sqlite3.dart \
+            --pattern sqlite3.wasm --dir web
+          if [ ! -f web/drift_worker.dart.js ] && [ -f web/drift_worker.js ]; then
+            cp web/drift_worker.js web/drift_worker.dart.js
+          fi
+          test -f web/sqlite3.wasm
+          test -f web/drift_worker.dart.js
+      - name: Build web example
+        run: flutter build web --release --base-href /toastification/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: example/build/web
+      - id: deployment
+        uses: actions/deploy-pages@v4
